@@ -37,7 +37,7 @@ public class ZHR {
 				System.out.println("Radiant altitude = " + altRad + "\n");
 				
 				int N = Integer.valueOf(c.readLine("Number of meteors observed = ")).intValue();
-				double Teff = Double.valueOf(c.readLine("Effective time of observation session = ")).doubleValue() / 60;
+				double Teff = Double.valueOf(c.readLine("Effective time of observation session (minutes) = ")).doubleValue() / 60;
 				double HR = N/Teff;
 				System.out.print("Hourly rate = " + HR + "\n\n");
 				
