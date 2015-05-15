@@ -15,33 +15,33 @@ public class ZHR {
 				System.exit(1);
 			}
 			
-			System.out.println("Pocetni podaci:");
-			double r = Double.valueOf(c.readLine("Populacijski indeks = ")).doubleValue();
-			double lm = Double.valueOf(c.readLine("Limitna magnituda = ")).doubleValue();
-			double RaRad = Double.valueOf(c.readLine("Ra radianta (u stupnjevima) = ")).doubleValue();
-			double DecRad = Double.valueOf(c.readLine("Dec radianta (u stupnjevima) = ")).doubleValue();
-			double latitude = Double.valueOf(c.readLine("Latituda promatraca (u stupnjevima) = ")).doubleValue();
-			double longitude = Double.valueOf(c.readLine("Longituda promatraca (u stupnjevima) = ")).doubleValue();
-			int Y = Integer.valueOf(c.readLine("Godina = ")).intValue();
-			int M = Integer.valueOf(c.readLine("Mjesec = ")).intValue();
-			int D = Integer.valueOf(c.readLine("Dan = ")).intValue();
+			double r = Double.valueOf(c.readLine("Population index = ")).doubleValue();
+			double lm = Double.valueOf(c.readLine("Limiting magnitude = ")).doubleValue();
+			double RaRad = Double.valueOf(c.readLine("RA of radiant (degrees) = ")).doubleValue();
+			double DecRad = Double.valueOf(c.readLine("DEC of radiant (degrees) = ")).doubleValue();
+			double latitude = Double.valueOf(c.readLine("Latitude (degrees) = ")).doubleValue();
+			double longitude = Double.valueOf(c.readLine("Longitude (degrees) = ")).doubleValue();
+			int Y = Integer.valueOf(c.readLine("Year = ")).intValue();
+			int M = Integer.valueOf(c.readLine("Month = ")).intValue();
+			int D = Integer.valueOf(c.readLine("Day = ")).intValue();
 			System.out.print("\n---------------------------\n\n");
 			
 			Settings sett = new Settings(latitude, longitude);
 			
 			while(true) {
-				int hour = Integer.valueOf(c.readLine("Sati (Lokalno) = ")).intValue();
-				int minute = Integer.valueOf(c.readLine("Minute (Lokalno) = ")).intValue();
+                System.out.println("Local time:");
+				int hour = Integer.valueOf(c.readLine("Hours = ")).intValue();
+				int minute = Integer.valueOf(c.readLine("Minutes = ")).intValue();
 				sett.setTime(Y, M-1, D, hour, minute);
 				double altRad = Geometry.getAltitude(RaRad, DecRad, sett);
-				System.out.println("Visina radianta = " + altRad + "\n");
+				System.out.println("Radiant altitude = " + altRad + "\n");
 				
-				int N = Integer.valueOf(c.readLine("Broj meteora = ")).intValue();
-				double Teff = Double.valueOf(c.readLine("Vrijeme (u minutama) = ")).doubleValue() / 60;
+				int N = Integer.valueOf(c.readLine("Number of meteors observed = ")).intValue();
+				double Teff = Double.valueOf(c.readLine("Effective time of observation session = ")).doubleValue() / 60;
 				double HR = N/Teff;
-				System.out.print("HR = " + HR + "\n\n");
+				System.out.print("Hourly rate = " + HR + "\n\n");
 				
-				double k = Double.valueOf(c.readLine("Korekcija vidnog polja (naoblaka) = ")).doubleValue();
+				double k = Double.valueOf(c.readLine("FOV cloude coverage factor (percentage) = ")).doubleValue()/100;
 				double F = 1 / (1 - k);
 				System.out.print("F = " + F + "\n\n");
 				
